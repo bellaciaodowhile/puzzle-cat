@@ -1,0 +1,97 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.main-puzzle {
+    padding: 40px;
+    background: #F0F0F0;
+    position: relative;
+}
+.main-puzzle h1 {
+    padding-bottom: 40px;
+}
+.main-puzzle h3,
+.main-puzzle h1,
+.main-puzzle p {
+    text-align: center;
+    padding-bottom: 10px;
+}
+.main-puzzle .section-puzzle {
+    display: flex;
+    gap: 10px;
+    max-width: 840px;
+    margin: 40px auto;
+}
+.main-puzzle .puzzle-from__images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.main-puzzle .puzzle-from__images img {
+    width: 200px;
+    height: 100px;
+    border: 3px solid #FFF;
+    cursor: zoom-in;
+}
+.main-puzzle .puzlle-to__images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 5px;
+    width: 100%;
+    height: 380px;
+    background: #EEE;
+    border: 1px solid #CCC;
+    margin-top: 20px;
+}
+.main-puzzle .puzlle-to__images .puzzle-to img {
+    width: 100%;
+    height: 100%;
+}
+.main-puzzle .puzlle-to__images .puzzle-to {
+    width: 49%;
+    height: 49%;
+    border: 1px solid #6A6A6A;
+    background: #6A6A6A;
+}
+.main-puzzle .puzzle-preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: zoom-out;
+    display: none;
+    justify-content: center;
+    background: #fffefe8a;
+}
+.main-puzzle .puzzle-preview.puzzle-preview--active {
+    display: flex;
+}
+.main-puzzle .img-success {
+    border: 1px solid #14bb14;
+}
+.main-puzzle .img-danger {
+    border: 1px solid #db2525;
+}
+.main-puzzle .puzzle-reset {
+    display: none;
+    cursor: pointer;
+    margin: 40px auto auto;
+    padding: 10px;
+    background: #0000;
+    border: 1px solid #CCC;
+}
+.main-puzzle .puzzle-reset.puzzle-reset--active {
+    display: flex;
+}
+.main-puzzle .puzzle-successfull {
+    display: none;
+}
+.main-puzzle .puzzle-successfull.puzzle-successfull--active {
+    display: block;
+}

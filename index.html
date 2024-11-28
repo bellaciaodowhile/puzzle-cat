@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    
+
+    <div class="main-puzzle">
+        <div class="puzzle-preview">
+            <img src="./images/2.jpg">
+        </div>
+        <h1>5.0.5 Juego de rompecabezas de arrastrar y soltar</h1>
+        <h3>Esto muestra cómo se pueden juntar piezas de información para formar un todo</h3>
+        <div class="section-puzzle">
+            <div class="puzzle-from">
+                <h3>Arrastra las piezas del rompecabezas a continuación</h3>
+                <div class="puzzle-from__images">
+                    <img draggable="true" src="./images/2.jpg" data-from="2">
+                    <img draggable="true" src="./images/3.jpg" data-from="3">
+                    <img draggable="true" src="./images/1.jpg" data-from="1">
+                    <img draggable="true" src="./images/4.jpg" data-from="4">
+                </div>
+            </div>
+            <div class="puzzle-to">
+                <h3>Coloca las piezas del rompecabezas aquí</h3>
+                <div class="puzlle-to__images">
+                    <div class="puzzle-to" data-to="1"></div>
+                    <div class="puzzle-to" data-to="2"></div>
+                    <div class="puzzle-to" data-to="3"></div>
+                    <div class="puzzle-to" data-to="4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="puzzle-successfull">
+            <h3>¡Resolviste el rompecabezas!</h3>
+            <p>¡Gracias por volver a armar el gato!</p>
+        </div>
+        <button class="puzzle-reset puzzle-reset--active">
+            Resstablecer rompecabezas
+        </button>
+        .
+    </div>
+
+
+
+
+    <script src="./index.js"></script>
+</body>
+</html>
