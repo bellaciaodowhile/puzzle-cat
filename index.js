@@ -1,10 +1,12 @@
 console.log('Puzzle JS')
 
+const puzzleFromImages = document.querySelector('.puzzle-from__images');
 const puzzleAllimages = document.querySelectorAll('.puzzle-from__images img');
 const puzzlePreview = document.querySelector('.puzzle-preview');
 const puzzleTos = document.querySelectorAll('.puzzle-to');
 const resetPuzzle = document.querySelector('.puzzle-reset');
 const puzzleSuccessfull = document.querySelector('.puzzle-successfull');
+
 
 let draggedImage = null;
 
@@ -93,7 +95,6 @@ function drop(e) {
 }
 
 function puzzleReset() {
-    const puzzleFromImages = document.querySelector('.puzzle-from__images');
 
     puzzleAllimages.forEach(image => {
         image.classList.remove('img-success', 'img-danger');
