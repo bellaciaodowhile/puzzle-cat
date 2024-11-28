@@ -20,9 +20,11 @@
 }
 .main-puzzle .section-puzzle {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
-    max-width: 840px;
     margin: 40px auto;
+    justify-content: center;
+    row-gap: 40px;
 }
 .main-puzzle .puzzle-from__images {
     display: flex;

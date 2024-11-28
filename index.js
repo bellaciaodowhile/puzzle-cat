@@ -6,6 +6,8 @@ const puzzleTos = document.querySelectorAll('.puzzle-to');
 const resetPuzzle = document.querySelector('.puzzle-reset');
 const puzzleSuccessfull = document.querySelector('.puzzle-successfull');
 
+let draggedImage = null;
+
 puzzleAllimages.forEach(function(img) {
     img.onclick = function(e) {
         e.preventDefault();
@@ -23,12 +25,16 @@ puzzlePreview.onclick = function(e) {
 puzzleAllimages.forEach(image => {
     image.addEventListener('dragstart', dragStart);
     image.addEventListener('dragend', dragEnd);
+    image.addEventListener('touchstart', touchStart);
+    image.addEventListener('touchend', touchEnd);
 });
 
 puzzleTos.forEach(puzzleTo => {
     puzzleTo.addEventListener('dragover', dragOver);
     puzzleTo.addEventListener('drop', drop);
+    puzzleTo.addEventListener('touchend', drop);
 });
+
 
 function dragStart(e) {
     e.dataTransfer.setData('text/plain', e.target.dataset.from);
@@ -43,28 +49,43 @@ function dragOver(e) {
     e.preventDefault();
 }
 
+function touchStart(e) {
+    draggedImage = e.target;
+    e.target.classList.add('dragging');
+}
+
+function touchEnd(e) {
+    if (draggedImage) {
+        const touch = e.changedTouches[0];
+        const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (dropTarget && dropTarget.classList.contains('puzzle-to')) {
+            drop({ target: dropTarget });
+        }
+        draggedImage.classList.remove('dragging');
+        draggedImage = null;
+    }
+}
+
 function drop(e) {
-    e.preventDefault();
-    const fromData = e.dataTransfer.getData('text/plain');
-    const toData = e.target.dataset.to;
     
-    const img = document.querySelector(`img[data-from="${fromData}"]`);
+    const fromData = e.dataTransfer ? e.dataTransfer.getData('text/plain') : draggedImage?.dataset.from;
+    const toData = e.target.dataset.to;
 
     const puzzleAllImagesSuccess = document.querySelectorAll('.main-puzzle img.img-success')
+
+    const img = document.querySelector(`img[data-from="${fromData}"]`);
 
     if (fromData === toData) {
         e.target.appendChild(img);
         img.classList.add('img-success');
-        img.classList.remove('img-danger');
-        img.setAttribute('draggable', 'false');
+        img.classList.remove('img-danger'); 
+        img.setAttribute('draggable', 'false'); 
     } else {
         e.target.appendChild(img);
         img.classList.add('img-danger');
-        img.classList.remove('img-success');
+        img.classList.remove('img-success'); 
     }
 
-    console.log(puzzleAllImagesSuccess.length)
-    
     if (puzzleAllImagesSuccess.length > 3) {
         puzzleSuccessfull.classList.add('puzzle-successfull--active');
     }
@@ -79,7 +100,7 @@ function puzzleReset() {
         image.setAttribute('draggable', 'true'); 
         puzzleFromImages.appendChild(image);
     });
-    
+
     puzzleSuccessfull.classList.remove('puzzle-successfull--active');
 }
 
